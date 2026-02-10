@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+  <table class="table table-hover">
+    <thead class=" table-primary">
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Ism</th>
+        <th scope="col">Familiya</th>
+        <th scope="col">Telefon raqam</th>
+        <th scope="col">Email</th>
+        <th scope="col">Xabar</th>
+        <th scope="col"></th>
+  
+      </tr>
+    </thead>
+    <tbody>   
+      {% for msg in object_list %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ msg.first_name }}</td>
+          <td>{{ msg.last_name }}</td>
+          <td>{{ msg.phone_number }}</td>
+          <td>{{ msg.email }}</td>
+          <td>{{ msg.message }}</td>
+          <td>
+            <a href="{% url 'message_delete' msg.pk %}">
+              <i class="bi bi-trash3"></i>
+            </a>
+          </td>
+        </tr>  
+      {% endfor %}
+    </tbody>    
+  </table>
+    
+</div>
+
+
+{% endblock content %}
